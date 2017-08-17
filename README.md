@@ -12,6 +12,8 @@ All codes here are in Golang or Java(Kotlin), I don't use this repo for learning
 
 #### [HelloTensorflow](HelloTensorflow.go)  : Hello,world 
 
+#### [OneDimenCalc](OneDimenCalc.go) : Do multiplication A x B .
+
 #### [SimpleMatrixCalc](SimpleMatrixCalc.go) : Do the fellowing computing on matrix. 
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <mi>A</mi>
