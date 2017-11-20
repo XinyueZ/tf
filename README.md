@@ -16,9 +16,12 @@ codes for common tasks.
 
 #### [OneDimenCalc](OneDimenCalc.go) : Do multiplication A x B .
 
+
 #### [multiply](multiply.py): Multiplication sample.
 
 #### [multiop](multiop.py): More than one operators.
+
+#### [Training: f(x)=W*sin(x)+b](sin.py)
 
 #### [SimpleMatrixCalc](SimpleMatrixCalc.go) : Do the fellowing computing on matrix. 
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
