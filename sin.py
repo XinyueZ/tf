@@ -1,18 +1,21 @@
-import tensorflow as tf
+import math
+
 import numpy
-import matplotlib.pyplot as plt
+import tensorflow as tf
 
 rng = numpy.random
+
+test_name = "Sine"
 
 # Parameters
 learning_rate = 0.01
 training_epochs = 5000
 display_step = 50
 
-# Training Data
-train_X = numpy.random.uniform(1, 30, size=10)
-train_Y = numpy.random.uniform(1, 30, size=10)
-
+# Training Data, target: f(x) = 3 * sin(x) + 5
+train_X = numpy.random.normal(0., math.pi, size=360)
+train_Y = []
+for x in train_X: train_Y.append(3 * math.sin(x) + 5)
 n_samples = train_X.shape[0]
 
 # tf Graph Input
@@ -25,7 +28,7 @@ Y = tf.placeholder("float")
 W = tf.Variable(rng.randn(), name="weight")
 b = tf.Variable(rng.randn(), name="bias")
 
-# Construct a linear model: f(x) = W*sin(x) + b
+# Construct a Sine model: f(x) = W*sin(x) + b
 activation = tf.add(tf.multiply(tf.sin(X), W), b)
 
 # Minimize the squared errors
@@ -53,9 +56,3 @@ with tf.Session() as sess:
     print "Optimization Finished!"
     print "cost=", sess.run(cost, feed_dict={X: train_X, Y: train_Y}), \
         "W=", sess.run(W), "b=", sess.run(b)
-
-    # Graphic display
-    plt.plot(train_X, train_Y, 'ro', label='Original data')
-    plt.plot(train_X, sess.run(W) * train_X + sess.run(b), label='Fitted line')
-    plt.legend()
-    plt.show()
