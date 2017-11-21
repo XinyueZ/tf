@@ -26,7 +26,7 @@ a = tf.Variable(rng.randn(), name="weight")
 b = tf.Variable(rng.randn(), name="bias_b")
 c = tf.Variable(rng.randn(), name="bias_c")
 
-# Construct a linear model: f(x) =a*x^2 + b*x + c
+# Construct a Quadratic-formula model: f(x) =a*x^2 + b*x + c
 activation = tf.add(tf.add(tf.multiply(a, tf.pow(X, 2)), tf.multiply(b, X)), c)
 
 # Minimize the squared errors
