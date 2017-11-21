@@ -13,12 +13,12 @@ with g2.as_default():
 
 with tf.Session(graph=g1) as sess:
     sess.run(tf.global_variables_initializer())
-    with tf.variable_scope("", reuse=True):
+    with tf.variable_scope("", reuse=tf.AUTO_REUSE):
         print "v in g1 = "
         print sess.run(tf.get_variable("v"))
 
 with tf.Session(graph=g2) as sess:
     sess.run(tf.global_variables_initializer())
-    with tf.variable_scope("", reuse=True):
+    with tf.variable_scope("", reuse=tf.AUTO_REUSE):
         print "v in g2 = "
         print sess.run(tf.get_variable("v"))
