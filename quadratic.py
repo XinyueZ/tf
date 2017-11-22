@@ -6,7 +6,7 @@ rng = numpy.random
 test_name = "Quadratic formula"
 
 # Parameters
-learning_rate = 0.01
+learning_rate = 0.001
 training_epochs = 10000
 display_step = 50
 
@@ -34,7 +34,7 @@ loss_less = 10
 loss_more = 1
 cost = tf.reduce_sum(tf.where(tf.greater(activation, Y),
                               (activation - Y) * loss_more, (Y - activation) * loss_less))
-optimizer = tf.train.AdamOptimizer(learning_rate=0.001).minimize(cost)
+optimizer = tf.train.AdamOptimizer(learning_rate).minimize(cost)
 
 # Initializing the variables
 init = tf.global_variables_initializer()
