@@ -31,8 +31,8 @@ b = tf.Variable(rng.randn(), name="bias")
 # Construct a Sine model: f(x) = W*sin(x) + b
 activation = tf.add(tf.multiply(tf.sin(X), W), b)
 
-# Minimize the squared errors
-cost = tf.reduce_sum(tf.pow(activation - Y, 2)) / (2 * n_samples)  # L2 loss
+# L2 Loss-cost
+cost = tf.reduce_sum(tf.pow(activation - Y, 2)) / (2 * n_samples)
 optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost)  # Gradient descent
 
 # Initializing the variables
@@ -50,9 +50,9 @@ with tf.Session() as sess:
         # Display logs per epoch step
         if epoch % display_step == 0:
             print "Epoch:", '%04d' % (epoch + 1), "cost=", \
-                "{:.9f}".format(sess.run(cost, feed_dict={X: train_X, Y: train_Y})), \
-                "W=", sess.run(W), "b=", sess.run(b)
+                "{:.19f}".format(sess.run(cost, feed_dict={X: train_X, Y: train_Y})), \
+                "W=", "{:.19f}".format(sess.run(W)), "b=", "{:.19f}".format(sess.run(b))
 
     print "Optimization Finished!"
-    print "cost=", sess.run(cost, feed_dict={X: train_X, Y: train_Y}), \
-        "W=", sess.run(W), "b=", sess.run(b)
+    print "cost=", "{:.19f}".format(sess.run(cost, feed_dict={X: train_X, Y: train_Y})), \
+        "W=", "{:.19f}".format(sess.run(W)), "b=", "{:.19f}".format(sess.run(b))

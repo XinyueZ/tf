@@ -6,7 +6,7 @@ rng = numpy.random
 test_name = "Quadratic formula"
 
 # Parameters
-learning_rate = 0.001
+learning_rate = 0.0001
 training_epochs = 10000
 display_step = 50
 
@@ -29,7 +29,7 @@ c = tf.Variable(rng.randn(), name="bias_c")
 # Construct a Quadratic-formula model: f(x) =a*x^2 + b*x + c
 activation = tf.add(tf.add(tf.multiply(a, tf.pow(X, 2)), tf.multiply(b, X)), c)
 
-# Minimize the squared errors
+# Customized Loss-cost
 loss_less = 10
 loss_more = 1
 cost = tf.reduce_sum(tf.where(tf.greater(activation, Y),
@@ -50,9 +50,11 @@ with tf.Session() as sess:
         # Display logs per epoch step
         if epoch % display_step == 0:
             print "Epoch:", '%04d' % (epoch + 1), "cost=", \
-                "{:.9f}".format(sess.run(cost, feed_dict={X: train_X, Y: train_Y})), \
-                "W=", sess.run(a), "b=", sess.run(b), "c=", sess.run(c)
+                "{:.19f}".format(sess.run(cost, feed_dict={X: train_X, Y: train_Y})), \
+                "a=", "{:.19f}".format(sess.run(a)), "b=", "{:.19f}".format(
+                sess.run(b)), "c=", "{:.19f}".format(sess.run(c))
 
     print "Optimization Finished!"
-    print "cost=", "{:.9f}".format(sess.run(cost, feed_dict={X: train_X, Y: train_Y})), \
-        "W=", sess.run(a), "b=", sess.run(b), "c=", sess.run(c)
+    print "cost=", "{:.19f}".format(sess.run(cost, feed_dict={X: train_X, Y: train_Y})), \
+        "a=", "{:.19f}".format(sess.run(a)), "b=", "{:.19f}".format(
+        sess.run(b)), "c=", "{:.19f}".format(sess.run(c))

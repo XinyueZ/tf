@@ -6,7 +6,7 @@ rng = numpy.random
 test_name = "The reciprocal function"
 
 # Parameters
-learning_rate = 0.0001
+learning_rate = 0.00015
 training_epochs = 5000
 display_step = 50
 
@@ -23,13 +23,13 @@ Y = tf.placeholder("float")
 # Create Model
 
 # Set model weights
-W = tf.Variable(rng.randn(), name="weight")
+a = tf.Variable(rng.randn(), name="weight")
 b = tf.Variable(rng.randn(), name="bias_b")
 
 # Construct a Quadratic-formula model: f(x) = 1 / x + bias
-activation = W * (1 / X) + b
+activation = a * (1 / X) + b
 
-# Minimize the squared errors
+# B-P-F-1 Loss-cost
 cost = tf.reduce_sum(tf.square(activation - Y)) / 10
 optimizer = tf.train.AdamOptimizer(learning_rate).minimize(cost)
 
@@ -48,8 +48,8 @@ with tf.Session() as sess:
         if epoch % display_step == 0:
             print "Epoch:", '%04d' % (epoch + 1), "cost=", \
                 "{:.19f}".format(sess.run(cost, feed_dict={X: train_X, Y: train_Y})), \
-                "W=", "{:.19f}".format(sess.run(W)), "b=", "{:.19f}".format(sess.run(b))
+                "a=", "{:.19f}".format(sess.run(a)), "b=", "{:.19f}".format(sess.run(b))
 
     print "Optimization Finished!"
     print "cost=", "{:.19f}".format(sess.run(cost, feed_dict={X: train_X, Y: train_Y})), \
-        "W=", "{:.19f}".format(sess.run(W)), "b=", "{:.19f}".format(sess.run(b))
+        "a=", "{:.19f}".format(sess.run(a)), "b=", "{:.19f}".format(sess.run(b))
