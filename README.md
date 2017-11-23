@@ -1,5 +1,8 @@
 # TF(Tensorflow).
 
+## What is training, see this file, this clears all very very basic-idea of data-training with TF.
+[For beginner](tf_beginner.py)
+
 Use TF to train different math-models. Use different taste on different Loss(cost) methods.
  
 #### [Training: f(x) = x^2 + 2*x + 1 with model  f(x) =a*x^2 + b*x + c](quadratic.py)
