@@ -57,7 +57,7 @@ b = tf.Variable([50.], tf.float32)
 x = tf.placeholder(tf.float32)
 y = tf.placeholder(tf.float32)
 
-# Our expected model
+# Our expectation-model
 activation = tf.add(tf.multiply(a, x), b)  # f(x) = a * x + b.
 
 # Our super-start, the loss-function, my expectation is 0, that means:
