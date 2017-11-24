@@ -86,3 +86,5 @@ print("loss: %s" % (session.run(loss, {x: x_train, y: y_train})))  # run() do al
 
 # You see, the 2nd training output is 0.0 !
 # Fine!, the target pair of (a, b) is (-1, 40)
+
+session.close()
