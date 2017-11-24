@@ -60,7 +60,7 @@ y = tf.placeholder(tf.float32)
 # Our expectation-model
 activation = tf.add(tf.multiply(a, x), b)  # f(x) = a * x + b.
 
-# Our super-start, the loss-function, my expectation is 0, that means:
+# Our super-star, the loss-function, my expectation is 0, that means:
 # the final (a, b) produce a loss(a, b) === 0 with all (x, y)s.
 # loss(a,b) = 1/(2 * n) * Σ|activation - input_y|^2
 loss = tf.reduce_sum(tf.square(activation - y)) / (2 * 4)  # We have 4 data in hand
