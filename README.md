@@ -1,11 +1,13 @@
-# TF(Tensorflow).
+# TF-Hub
 
-#### What is training, see this file, this clears all very very basic-idea of data-training with TF, [for beginner](tf_beginner.py).
+Here I try to summary some useful porches, materials, information about programming with [Tensorflow](https://www.tensorflow.org). 
 
-
-Use TF to train different math-models. Use different taste on different Loss(cost) methods.
+#### [For beginner](tf_beginner.py) What is training, here clears step-by-step, coding pattern, loss-function, porch of coding with TF.
+#### [For beginner+](tf_beginner_plus.py) What is optimizer, here clears what it does, how it works, why we need it.
  
-#### [Training: f(x) = x^2 + 2*x + 1 with model  f(x) =a*x^2 + b*x + c](quadratic.py)
+## Let's train some models
+
+##### [Training: f(x) = x^2 + 2*x + 1 with model  f(x) =a*x^2 + b*x + c](quadratic.py)
 
 - Training time: 10000
 - Rate: 0.5 (You will find the "a, b, c" have a very different change rate.)
@@ -24,7 +26,7 @@ If you want to keep result near to target, let rate under 0.01 or less.
 > cost= 156.8805389404296875000 a= 1.0002055168151855469 b= 1.9995691776275634766 c= 1.0115379095077514648
 
 
-#### [Training: f(x)=a*(1/x)+b](reciprocal.py)
+##### [Training: f(x)=a*(1/x)+b](reciprocal.py)
 - Training time: 5000
 - Rate: 0.00015
 - Random: 1 to 100
@@ -33,7 +35,7 @@ If you want to keep result near to target, let rate under 0.01 or less.
 - Loss(cost):  [B-P-F-1](http://upload-images.jianshu.io/upload_images/4593922-4d24d17a6a2d6a8b.jpg?imageMogr2/auto-orient/strip)
 > The loss(cost) is less! cost= 0.0000000326241789139 a= 1.0002250671386718750 b= 0.0000251986421062611
 
-#### [Training: f(x)=W*sin(x)+b](sin.py)
+##### [Training: f(x)=W*sin(x)+b](sin.py)
 - Training time: 5000
 - Rate:  0.01
 - Random: 0 to Pi
