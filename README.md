@@ -10,6 +10,9 @@ Here I try to summary some useful porches, materials, information about programm
     - Result: loss= 0.0000157946196850389 a= [-1.00184119] b= [ 40.04899979] 
     - Training time: 400000
     - Rate = 0.0028
+#### [For beginners who need "hello,world" of "hello,world"  about the artificial neural network(ANN).](tf_beginner_ann_helloworld.py)
+> Attention, if you want to use TF for the artificial neural network, checkout a short introduction about ANN on [wiki](https://en.wikipedia.org/wiki/Artificial_neural_network) firstly. This sample will use 3 layer-steps to output a couple of results.
+More details in file.
     
 ## Let's train some models
 
