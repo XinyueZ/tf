@@ -23,8 +23,8 @@ import numpy as np
 #
 # 3. data & statistic:
 #               3.1 The collection of all cubes will be declared as one-line vector, see [L, W, H]
-#               3.2 For demo, [L, W, H] will be initialized with hard-coding randomly.
-#               3.3 Weight: From one layer to another we need weight, see Wt.
+#               3.2 For demo, [L, W, H] will be initialized with hard-coding randomly, see cubes
+#               3.3 Weight: From one layer to another we need weight, see Weights.
 #               3.4 Bias: For this simple demo, I don't want to bring this concept, it'll be used in
 #                   the future samples.
 
@@ -39,9 +39,22 @@ N = 1000
 
 cubes = tf.constant(np.random.normal(loc=20.0, scale=20.0, size=(N, 3)))
 
+# Weight
+Weights = tf.constant(np.random.normal(loc=1.0, scale=5.0, size=(3, N)))
+
+
 init = tf.global_variables_initializer()
 with tf.Session() as sess:
     sess.run(init)
     components = sess.run(cubes)
+    print "################################################"
+    print "Component(cube) list:"
+    print "################################################"
     for component in components:
         print component
+    print "################################################"
+    print "Weight list:"
+    print "################################################"
+    weights = sess.run(Weights)
+    for weight in weights:
+        print weight
