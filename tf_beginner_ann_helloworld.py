@@ -8,6 +8,10 @@ import numpy as np
 # I promise that this code-sheet is a "hello,world" of "hello,world" samples comparing
 # with others.
 
+# In this example, there's no loss-function, optimizer, it is a filter logical with matrix functions
+# of TF. You can do this with python numpy of cos, however, we are introducing the Tensorflow.
+
+
 # I will define a network with
 #
 # 1. One layer for input
@@ -37,11 +41,23 @@ import numpy as np
 # As master of this factory I want to checkout fist N couple of components.
 N = 1000
 
-cubes = tf.constant(np.random.normal(loc=20.0, scale=20.0, size=(N, 3)))
+cubes = tf.constant(np.random.normal(loc=10.0, scale=10.0, size=(N, 3)))
 
-# Weight
-Weights = tf.constant(np.random.normal(loc=1.0, scale=5.0, size=(3, N)))
+# Weight for all steps, see below for details.
+Weights_1 = tf.constant(np.random.normal(loc=1.0, scale=5.0, size=(3, N)))
+Weights_2 = tf.constant(np.random.normal(loc=1.0, scale=5.0, size=(N, 1)))
 
+# Make an artificial neural network(ANN) with
+# layer 0: one input ground
+# layer 1: one hide layer
+# layer 2: one output
+# Rule:
+#       when output is > 0 ->>> it is a good component(cube).
+#       otherwise ->>> it is out of quality.
+# Transfer between layers
+
+step_1 = tf.matmul(cubes, Weights_1)  # input -> layer 1
+step_2 = tf.matmul(step_1, Weights_2)  # output
 
 init = tf.global_variables_initializer()
 with tf.Session() as sess:
@@ -52,9 +68,14 @@ with tf.Session() as sess:
     print "################################################"
     for component in components:
         print component
+
     print "################################################"
-    print "Weight list:"
+    print "Selecting components:"
     print "################################################"
-    weights = sess.run(Weights)
-    for weight in weights:
-        print weight
+    sess.run(step_1)
+    output_list = sess.run(step_2)
+    for output in output_list:
+        if output[0] > 0:
+            print output[0], "✓"
+        else:
+            print output[0], "✗"
