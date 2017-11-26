@@ -1,5 +1,6 @@
 # coding=utf-8
 import tensorflow as tf
+import numpy as np
 
 # Read this code-sheet you must have basic knowledge of artificial neural network(ANN).
 # https://en.wikipedia.org/wiki/Artificial_neural_network
@@ -22,8 +23,25 @@ import tensorflow as tf
 #
 # 3. data & statistic:
 #               3.1 The collection of all cubes will be declared as one-line vector, see [L, W, H]
-#               3.2 For demo, [L, W, H] will be initialized with hard-coding.
+#               3.2 For demo, [L, W, H] will be initialized with hard-coding randomly.
 #               3.3 Weight: From one layer to another we need weight, see Wt.
 #               3.4 Bias: For this simple demo, I don't want to bring this concept, it'll be used in
 #                   the future samples.
 
+# Define cube(component) collection.
+# It'll look like:
+# [[23, 53, 12], [24, 67, 24], [34, 68, 24],..... ]
+# The random is being generated with the standard-deviation.
+# Don't care about deviation, you can do all what you can to generate this array(matrix).
+
+# As master of this factory I want to checkout fist N couple of components.
+N = 1000
+
+cubes = tf.constant(np.random.normal(loc=20.0, scale=20.0, size=(N, 3)))
+
+init = tf.global_variables_initializer()
+with tf.Session() as sess:
+    sess.run(init)
+    components = sess.run(cubes)
+    for component in components:
+        print component
