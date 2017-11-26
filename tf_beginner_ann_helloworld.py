@@ -76,6 +76,6 @@ with tf.Session() as sess:
     output_list = sess.run(step_2)
     for output in output_list:
         if output[0] > 0:
-            print output[0], "✓"
+            print output[0], "\t\t✓"
         else:
-            print output[0], "✗"
+            print output[0], "\t\t✗"
