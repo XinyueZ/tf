@@ -80,9 +80,8 @@ Weights_2 = tf.constant(np.random.normal(loc=1.0, scale=5.0, size=(3, 1)))
 #       otherwise ->>> it is out of quality.
 # Transfer between layers
 
-
-
 init = tf.global_variables_initializer()
+
 with tf.Session() as sess:
     sess.run(init)
     components = sess.run(cubes)
