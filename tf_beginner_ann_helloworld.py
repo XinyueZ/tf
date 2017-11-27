@@ -2,7 +2,6 @@
 import numpy as np
 import tensorflow as tf
 
-
 # Read this code-sheet you must have basic knowledge of artificial neural network(ANN).
 # https://en.wikipedia.org/wiki/Artificial_neural_network
 
@@ -39,7 +38,7 @@ import tensorflow as tf
 # The random is being generated with the standard-deviation.
 # Don't care about deviation, you can do all what you can to generate this array(matrix).
 
-# The whole process will be like this:
+# The whole process will be like this(one component):
 
 #         Input                                           weight-0                                        step 1 finished                                  weight-1                     Done
 #
@@ -58,18 +57,18 @@ import tensorflow as tf
 #
 # [                   ]                          [                   ]                              [                   ]                           [                   ]        [                   ]
 
-def format_num(num):
-    return "{:.20f}".format(num)
+
 
 
 # As master of this factory I want to checkout fist N couple of components.
 N = 100
 
-cubes = tf.constant(np.random.normal(loc=5.0, scale=5.0, size=(N, 3)))
+cubes = tf.constant(np.random.normal(loc=0.0, scale=1.0, size=(N, 3)))
+x = tf.placeholder(tf.float32, (N, 3))
 
 # Weight for all steps, see below for details.
-Weights_1 = tf.constant(np.random.normal(loc=1.0, scale=5.0, size=(3, 3)))
-Weights_2 = tf.constant(np.random.normal(loc=1.0, scale=5.0, size=(3, 1)))
+Weights_1 = tf.constant(np.random.normal(loc=0.0, scale=1.0, size=(3, 3)), dtype=tf.float32)
+Weights_2 = tf.constant(np.random.normal(loc=0.0, scale=1.0, size=(3, 1)), dtype=tf.float32)
 
 # Make an artificial neural network(ANN) with
 # layer 0:   input layer
@@ -80,30 +79,28 @@ Weights_2 = tf.constant(np.random.normal(loc=1.0, scale=5.0, size=(3, 1)))
 #       otherwise ->>> it is out of quality.
 # Transfer between layers
 
+step_1 = tf.matmul(x, Weights_1)  # input -> layer 1
+y = tf.matmul(step_1, Weights_2)  # output
+
 init = tf.global_variables_initializer()
 
 with tf.Session() as sess:
     sess.run(init)
     components = sess.run(cubes)
-    print "################################################"
-    print "Component(cube) list:"
-    print "################################################"
-    for component in components:
-        reshape_component = tf.reshape(component, [1, 3])
-        reshaped = sess.run(reshape_component)
-        step_1 = tf.matmul(reshaped, Weights_1)  # input -> layer 1
-        step_2 = tf.matmul(step_1, Weights_2)  # output
-        sess.run(step_1)
-        output = sess.run(step_2)
-        if output[0][0] > 0:
-            print "Component ====> Length = ", format_num(
-                reshaped[0][0]), "\t", ", Width = ", format_num(
-                reshaped[0][1]), "\t", ", Height = ", "\t", format_num(
-                reshaped[0][2]), "\t", "====>", "\t", format_num(
-                output[0][0]), "====>\t\t✓"
+    outputs = sess.run(y, feed_dict={x: components})
+    index = 0
+    for output in outputs:
+        component = components[index]
+        if output[0] > 0:
+            print "\t\t\t✓\t\t\t", \
+                "X= Length:", '%2.4f' % component[0], \
+                "Width:", '%2.4f' % component[1], \
+                "Height:", '%2.4f' % component[2], \
+                'Y= %2.4f' % output[0]
         else:
-            print "Component ====> Length = ", format_num(
-                reshaped[0][0]), "\t", ", Width = ", format_num(
-                reshaped[0][1]), "\t", ", Height = ", "\t", format_num(
-                reshaped[0][2]), "\t", "====>", "\t", format_num(
-                output[0][0]), "====>\t\t✗"
+            print "\t\t\t✗\t\t\t", \
+                "X= Length:", '%2.4f' % component[0], \
+                "Width:", '%2.4f' % component[1], \
+                "Height:", '%2.4f' % component[2], \
+                'Y= %2.4f' % output[0]
+        index = index + 1
