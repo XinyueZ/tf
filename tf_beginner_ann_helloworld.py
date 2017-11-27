@@ -65,7 +65,7 @@ def format_num(num):
 # As master of this factory I want to checkout fist N couple of components.
 N = 100
 
-cubes = tf.constant(np.random.normal(loc=10.0, scale=30.0, size=(N, 3)))
+cubes = tf.constant(np.random.normal(loc=5.0, scale=5.0, size=(N, 3)))
 
 # Weight for all steps, see below for details.
 Weights_1 = tf.constant(np.random.normal(loc=1.0, scale=5.0, size=(3, 3)))
