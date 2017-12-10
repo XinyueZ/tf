@@ -80,7 +80,7 @@ Weights_2 = tf.constant(np.random.normal(loc=0.0, scale=1.0, size=(3, 1)), dtype
 # Transfer between layers
 
 step_1 = tf.matmul(x, Weights_1)  # input -> layer 1
-y = tf.matmul(step_1, Weights_2)  # output
+y = tf.clip_by_value(tf.matmul(step_1, Weights_2), 0, 1)  # output: when y < 0, take 0, if > 1, take 1
 
 init = tf.global_variables_initializer()
 
