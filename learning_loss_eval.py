@@ -1,4 +1,5 @@
 import tensorflow as tf
+import numpy as np
 
 # Softmax
 y = tf.constant([[0.3, 0.4, 0.5]])  # estimated
