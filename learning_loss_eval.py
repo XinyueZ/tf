@@ -45,7 +45,7 @@ with tf.Session() as sess:
             0 * np.log(softmax[0][0]) + 1 * np.log(softmax[0][1]) +
             1 * np.log(softmax[1][0]) + 0 * np.log(softmax[1][1]) +
             1 * np.log(softmax[2][0]) + 1 * np.log(softmax[2][1])
-        ) / 3)
+        ) / 6)
     print "builtIn softmax_cross_entropy_with_logits:", sess.run(
         tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=logits)))
 
