@@ -16,7 +16,7 @@ More details in file.
     
 ## Let's train some models
 
-##### [quadratic](quadratic.py)
+##### [quadratic](tf_quadratic.py)
 - Model: f(x) =a*x^2 + b*x + c
 - Target: f(x) = x^2 + 2*x + 1
 - Training time: 10000
@@ -34,7 +34,7 @@ If you want to keep result near to target, let rate under 0.01 or less.
 > cost= 156.8805389404296875000 a= 1.0002055168151855469 b= 1.9995691776275634766 c= 1.0115379095077514648
 
 
-##### [reciprocal](reciprocal.py)
+##### [reciprocal](tf_reciprocal.py)
 - Model: f(x) = a * (1 / x) + b
 - Target: f(x) = 1 / x
 - Training time: 5000
@@ -43,7 +43,7 @@ If you want to keep result near to target, let rate under 0.01 or less.
 - Loss(cost):  [B-P-F-1](http://upload-images.jianshu.io/upload_images/4593922-4d24d17a6a2d6a8b.jpg?imageMogr2/auto-orient/strip)
 > The loss(cost) is less! cost= 0.0000000326241789139 a= 1.0002250671386718750 b= 0.0000251986421062611
 
-##### [sin](sin.py)
+##### [sin](tf_sin.py)
 - Model: f(x) = W * sin(x) + b
 - Target: f(x) = 3 * sin(x) + 5
 - Training time: 5000
