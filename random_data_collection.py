@@ -1,8 +1,8 @@
 from numpy.random import RandomState
 
 rdm = RandomState(1)
-dataset_size = 128
-X = rdm.rand(dataset_size, 2)
+data_set_size = 128
+X = rdm.rand(data_set_size, 2)
 Y = [[int(x1 + x2 < 1)] for (x1, x2) in X]
 
 print X
