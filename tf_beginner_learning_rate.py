@@ -21,13 +21,18 @@ activation = a * x + b
 
 # Using exponential_decay to calculate learning-rate dynamically.
 global_step = tf.Variable(0)
-learning_rate = tf.train.exponential_decay(0.01, global_step, 100, 0.96, staircase=False)
+learning_rate = tf.train.exponential_decay(0.001, global_step, 200, 0.96, staircase=True)
 
 loss = tf.reduce_sum(tf.square(activation - y)) / (2 * N)  # We have 4 data in hand
-optimizer = tf.train.GradientDescentOptimizer(loss).minimize(loss, global_step=global_step)
+optimizer = tf.train.AdamOptimizer(loss).minimize(loss, global_step=global_step)
+
+optimizer_name = "AdamOptimizer"
 
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
+
+    print optimizer_name
+
     # Fit all training data
     for step in range(N):
         for (x_, y_) in zip(x_logits, y_logits):
@@ -39,6 +44,6 @@ with tf.Session() as sess:
                 "{:.19f}".format(sess.run(loss, feed_dict={x: x_logits, y: y_logits})), \
                 "a=", "{:.19f}".format(sess.run(a)), "b=", "{:.19f}".format(sess.run(b))
 
-    print "Optimization Finished!"
+    print optimizer_name, "Finished!"
     print "Loss=", "{:.19f}".format(sess.run(loss, feed_dict={x: x_logits, y: y_logits})), \
         "a=", "{:.19f}".format(sess.run(a)), "b=", "{:.19f}".format(sess.run(b))
