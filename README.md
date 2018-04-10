@@ -13,7 +13,17 @@ Here I try to summary some useful porches, materials, information about programm
 #### [For beginners who need "hello,world" of "hello,world"  about the artificial neural network(ANN).](tf_beginner_ann_helloworld.py)
 > Attention, if you want to use TF for the artificial neural network, checkout a short introduction about ANN on [wiki](https://en.wikipedia.org/wiki/Artificial_neural_network) firstly. This sample will use 3 layer-steps to output a couple of results.
 More details in file.
-    
+
+## For advanced learning resource
+
+[Some exercises of NN](https://github.com/XinyueZ/some-python-codes#machine-learning)
+> Check out this repos, it is real a step-by-step stage.
+
+* Download data -> unpack them -> for performance saving in binary -> read from in binary saved files -> optimizing some -> make training work. *
+
+    - Including 2 kinds of "lazy" trainings with gradient descent.
+    - Utils classes to download train-data, valid-data, as well extract of download tar.gz files. What interesting is about serialize and deserialize data-set and labels.
+
 ## Let's train some models
 
 ##### [quadratic](tf_quadratic.py)
