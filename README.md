@@ -19,7 +19,7 @@ More details in file.
 [Some exercises of NN](https://github.com/XinyueZ/some-python-codes#machine-learning)
 > Check out this repos, it is real a step-by-step stage.
 
-* Download data -> unpack them -> for performance saving in binary -> read from in binary saved files -> optimizing some -> make training work. *
+* Download data -> unpack them -> for performance to save data/labels in binary -> read from in binary saved files -> optimizing some -> make training work. 
 
     - Including 2 kinds of "lazy" trainings with gradient descent.
     - Utils classes to download train-data, valid-data, as well extract of download tar.gz files. What interesting is about serialize and deserialize data-set and labels.
