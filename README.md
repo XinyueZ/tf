@@ -1,4 +1,13 @@
+# If you like easy programming of machine-learning?
+
+Checkout here, sample codes of a tool called [scikit-learn](http://scikit-learn.org/)
+https://github.com/XinyueZ/some-python-codes#scikit-learn
+
+Otherwise go head with this repository.
+
 # TF-Hub
+
+
 
 Here I try to summary some useful porches, materials, information about programming with [Tensorflow](https://www.tensorflow.org). 
 
