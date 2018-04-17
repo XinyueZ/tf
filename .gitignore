@@ -6,3 +6,4 @@ img
 config.py
 *.tsv
 *.csv
+__pycache__
