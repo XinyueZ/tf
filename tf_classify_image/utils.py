@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
 from downloader import Downloader
-from config import (DATA_SOURCE_FILE, OBJECT_NAME, HOST_PATH, CSV_COLUMN_NAMES)
+from config import (DATA_SOURCE_FILE, OBJECT_NAME, HOST_PATH,
+                    CSV_COLUMN_NAMES, OBJECT_WIDTH, OBJECT_HEIGHT)
 
 
 def download_all_images_photos():
@@ -17,8 +18,8 @@ def download_all_images_photos():
         )
         object_name = OBJECT_NAME.format(
             line["MULTIMEDIA_ID"],
-            line["WIDTH"],
-            line["HEIGHT"],
+            OBJECT_WIDTH,
+            OBJECT_HEIGHT,
             line["EXTENSION"],
         )
 
