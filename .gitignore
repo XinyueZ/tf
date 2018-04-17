@@ -2,3 +2,7 @@
 *.iml
 .DS_Store
 img/*.*
+img
+config.py
+*.tsv
+*.csv
