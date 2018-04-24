@@ -7,3 +7,7 @@ config.py
 *.tsv
 *.csv
 __pycache__
+tensorflow-for-poets-2
+*.png
+tf_files/
+
